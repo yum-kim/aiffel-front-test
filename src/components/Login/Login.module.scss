@@ -1,0 +1,33 @@
+@import '../../styles/main.scss';
+
+.loginWrapper {
+  height: 100vh;
+  @include flexbox();
+
+  .login {
+    width: 400px;
+
+    .logo {
+      width: 70%;
+      margin: 0 auto 1.2rem;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .inputWrapper {
+      margin-bottom: 0.5rem;
+
+      input {
+        &:not(:last-child) {
+          margin-bottom: 0.3rem;
+        }
+      }
+    }
+
+    .error {
+      @include text-style(14, $red);
+    }
+  }
+}

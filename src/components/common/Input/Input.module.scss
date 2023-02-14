@@ -1,0 +1,19 @@
+@import '../../../styles/main.scss';
+
+.input {
+  width: 400px;
+  height: 40px;
+  border: 1px solid $secondary;
+  border-radius: 4px;
+  padding-left: 10px;
+
+  @include text-style(16);
+
+  &:hover {
+    background-color: $background;
+  }
+
+  &::placeholder {
+    color: $tertiary;
+  }
+}

@@ -1,0 +1,40 @@
+@import '../../../styles/main.scss';
+
+.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 0 10px;
+  border: none;
+  background-color: $yellow;
+  color: $white;
+
+  &[outline='true'] {
+    background-color: $background;
+    border: 1px solid $yellow;
+    color: $black;
+  }
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &[size='32'] {
+    @include text-style(14);
+    height: 32px;
+  }
+
+  &[size='40'] {
+    @include text-style(16);
+    height: 40px;
+  }
+
+  &[size='48'] {
+    @include text-style(16);
+    height: 48px;
+  }
+
+  &[size='55'] {
+    @include text-style(18);
+    height: 55px;
+  }
+}
