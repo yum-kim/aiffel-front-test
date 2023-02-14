@@ -1,0 +1,86 @@
+@import '../../../styles/main.scss';
+
+.post {
+  @include flexbox(between, center);
+  border-top: 1px solid $border;
+  padding: 15px 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $background;
+  }
+
+  &:last-child {
+    border-bottom: 1px solid $border;
+  }
+
+  .lftArea {
+    @include flexbox(start, center);
+
+    padding-right: 1rem;
+
+    .like {
+      width: 50px;
+      flex-shrink: 0;
+      margin-right: 10px;
+
+      svg {
+        cursor: pointer;
+      }
+    }
+
+    .contentWrapper {
+      .title {
+        @include text-style(24, $primary);
+        margin-bottom: 1rem;
+      }
+
+      .content {
+        @include text-style(16, $secondary);
+        margin-bottom: 0.5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+
+      .tagWrapper {
+        @include flexbox(start, center);
+
+        .tagList {
+          @include text-style(13, $primary);
+          padding: 2px 5px;
+          border-radius: 4px;
+          color: $white;
+
+          &:not(:last-of-type) {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .rhtArea {
+    @include column-flexbox();
+    @include text-style(14, $red);
+    flex-shrink: 0;
+
+    .time {
+      @include text-style(14, $tertiary);
+    }
+
+    .profile {
+      width: 30px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto;
+
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}

@@ -34,6 +34,12 @@
   letter-spacing: $letter-spacing-24;
 }
 
+@mixin text-style-28() {
+  font-size: $font-size-28;
+  line-height: $line-height-28;
+  letter-spacing: $letter-spacing-28;
+}
+
 //공통으로 쓸 mixin
 @mixin text-style($size, $color: false) {
   @if ($size == 12) {
@@ -58,6 +64,10 @@
 
   @if ($size == 24) {
     @include text-style-24;
+  }
+
+  @if ($size == 28) {
+    @include text-style-28;
   }
 
   @if (type-of($color) == color) {

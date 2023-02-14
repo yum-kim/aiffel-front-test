@@ -1,0 +1,92 @@
+@import '../../styles/main.scss';
+
+.forum {
+  .topArea {
+    @include flexbox(between);
+
+    .title {
+      @include text-style(28, $black);
+      margin-bottom: 15px;
+    }
+
+    button {
+      width: 100px;
+      border-radius: 4px;
+    }
+  }
+
+  .searchWrapper {
+    margin-bottom: 2rem;
+
+    .search {
+      margin-bottom: 1rem;
+
+      form {
+        @include flexbox();
+      }
+
+      input {
+        flex-grow: 1;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      button {
+        width: 100px;
+        height: 40px;
+        margin-left: -1px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+    }
+
+    .sorting {
+      @include inline-flexbox();
+
+      div {
+        @include text-style(14, $primary);
+
+        background-color: $lightGray;
+        padding: 0 15px;
+        border-radius: 5px;
+
+        &:not(:last-child) {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  .list {
+    @include flexbox(between, center);
+    padding-bottom: 10px;
+
+    button {
+      width: 100px;
+      border-radius: 4px;
+    }
+  }
+
+  .pagination {
+    margin-top: 2rem;
+    ol {
+      @include flexbox();
+
+      li {
+        cursor: pointer;
+        padding: 0 5px;
+
+        &[active='true'] {
+          color: $blue;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .result {
+    text-align: center;
+    padding: 3rem 0;
+    border-top: 1px solid $border;
+  }
+}

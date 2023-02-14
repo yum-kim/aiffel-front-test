@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginRequestAction } from '../../reducers/user';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../common/Loading/Loading';
 
 const Login = () => {
   const emailInput = useRef();
@@ -70,6 +71,8 @@ const Login = () => {
 
   return (
     <section className={styles.loginWrapper}>
+      {loginLoading && <Loading />}
+
       <div className={styles.login}>
         <div className={styles.logo}>
           <img src="images/aiffel_logo.png" alt="로고 이미지" />
@@ -93,11 +96,8 @@ const Login = () => {
             ref={passwordInput}
           />
         </div>
-
         {emailError && <p className={styles.error}>{emailError}</p>}
         {passwordError && <p className={styles.error}>{passwordError}</p>}
-        {loginLoading && <p>로그인 중입니다...</p>}
-
         <Button
           name="로그인"
           size="40"

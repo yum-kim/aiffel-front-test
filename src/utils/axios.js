@@ -15,7 +15,6 @@ const requestAxios = async (options) => {
 
   try {
     res = await axios(options);
-    console.log(res);
   } catch (e) {
     res = e.response;
     console.error(e);

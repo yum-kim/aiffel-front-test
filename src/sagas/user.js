@@ -1,8 +1,6 @@
 import { all, fork, put, takeLatest, call } from 'redux-saga/effects';
 import {
   LOG_IN_REQUEST,
-  LOG_IN_SUCCESS,
-  LOG_IN_FAILURE,
   loginSuccessAction,
   loginFailureAction,
 } from '../reducers/user';

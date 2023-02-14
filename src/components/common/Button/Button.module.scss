@@ -5,17 +5,30 @@
   width: 100%;
   padding: 0 10px;
   border: none;
-  background-color: $yellow;
-  color: $white;
-
-  &[outline='true'] {
-    background-color: $background;
-    border: 1px solid $yellow;
-    color: $black;
-  }
+  opacity: 1;
 
   &:hover {
     opacity: 0.9;
+  }
+
+  &[theme='yellow'] {
+    background-color: $yellow;
+    color: $white;
+  }
+
+  &[theme='gray'] {
+    background-color: $tertiary;
+    color: $white;
+  }
+
+  &[theme='blue'] {
+    background-color: $blue;
+    color: $white;
+  }
+
+  &[active='true'] {
+    font-weight: bold;
+    background-color: $secondary;
   }
 
   &[size='32'] {

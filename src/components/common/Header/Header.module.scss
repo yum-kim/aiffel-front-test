@@ -1,0 +1,50 @@
+@import '../../../styles/main.scss';
+
+.header {
+  width: 100%;
+  height: 100px;
+  @include flexbox(between, center);
+
+  .logo {
+    width: 150px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .userInfo {
+    @include flexbox();
+
+    .profile {
+      width: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 15px;
+
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    .menu {
+      padding: 0 15px;
+      a {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+
+        &:hover {
+          color: $red;
+        }
+      }
+    }
+
+    .username {
+      padding: 0 15px;
+
+      @include text-style-14();
+    }
+  }
+}

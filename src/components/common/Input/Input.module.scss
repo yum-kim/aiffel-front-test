@@ -3,15 +3,22 @@
 .input {
   width: 400px;
   height: 40px;
-  border: 1px solid $secondary;
+  // border: 1px solid $secondary;
   border-radius: 4px;
   padding-left: 10px;
 
-  @include text-style(16);
-
-  &:hover {
-    background-color: $background;
+  &[theme='bg'] {
+    background-color: $lightGray;
   }
+
+  &[theme='outline'] {
+    border: 1px solid $secondary;
+    &:hover {
+      background-color: $background;
+    }
+  }
+
+  @include text-style(16);
 
   &::placeholder {
     color: $tertiary;

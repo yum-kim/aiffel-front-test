@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from './Button.module.scss';
 
-const Button = ({ name, size = 32, outline, onClick, ...props }) => {
+const Button = ({ name, size = 32, theme = 'yellow', onClick, ...props }) => {
   return (
     <button
       className={`${styles.btn}`}
       size={size}
       onClick={onClick}
-      outline={outline}
+      theme={theme}
       {...props}
     >
       {name}
