@@ -26,6 +26,7 @@ const PostDetail = () => {
 
   const onToggleLike = () => {
     setIsLiked((prev) => !prev);
+    dispatch(postLikeRequestAction({ id, isLiked: !isLiked }));
   };
 
   const onDeletePost = () => {
@@ -40,10 +41,6 @@ const PostDetail = () => {
       navigate('/forum');
     }
   }, [deleted]);
-
-  useEffect(() => {
-    dispatch(postLikeRequestAction({ id, isLiked }));
-  }, [isLiked]);
 
   useEffect(() => {
     setIsLiked(postDetailData.isLiked);
