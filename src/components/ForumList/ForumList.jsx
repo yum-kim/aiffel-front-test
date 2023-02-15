@@ -11,6 +11,7 @@ import {
   postByPageRequestAction,
 } from '../../reducers/post';
 import Loading from '../common/Loading/Loading';
+import { Link, Routes, Route, Outlet } from 'react-router-dom';
 
 const ForumList = () => {
   const [searchTxt, setSearchText] = useState('');

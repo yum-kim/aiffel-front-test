@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginRequestAction } from '../../reducers/user';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../common/Loading/Loading';
+import logoImg from '../../assets/images/aiffel_logo.png';
 
 const Login = () => {
   const emailInput = useRef();
@@ -75,7 +76,7 @@ const Login = () => {
 
       <div className={styles.login}>
         <div className={styles.logo}>
-          <img src="images/aiffel_logo.png" alt="로고 이미지" />
+          <img src={logoImg} alt="로고 이미지" />
           {/* {data.map((item) => {
             return <div>{item.id}</div>;
           })} */}
