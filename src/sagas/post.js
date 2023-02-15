@@ -50,6 +50,18 @@ function deletePostAPI(id) {
   return requestAxios(options);
 }
 
+function addPostAPI(data) {
+  console.log(data);
+
+  const options = {
+    method: 'POST',
+    url: `/forum`,
+    data,
+  };
+
+  return requestAxios(options);
+}
+
 function* searchAllPost(action) {
   try {
     const data = yield call(getPostAPI, action.data);
@@ -118,15 +130,28 @@ function* deletePost(action) {
   try {
     const data = yield call(deletePostAPI, action.data);
 
-    console.log('삭제한 결과값');
-    console.log(data);
-
     yield put({
       type: POST_DELETE_SUCCESS,
     });
   } catch (e) {
     yield put({
       type: POST_DELETE_FAILURE,
+      data: e.response.data,
+    });
+  }
+}
+
+function* addPost(action) {
+  try {
+    const data = yield call(addPostAPI, action.data);
+
+    yield put({
+      type: POST_ADD_SUCCESS,
+      data,
+    });
+  } catch (e) {
+    yield put({
+      type: POST_ADD_FAILURE,
       data: e.response.data,
     });
   }
@@ -141,7 +166,7 @@ function* watchPostByPageRequest() {
 }
 
 function* watchPostAddRequest() {
-  yield takeLatest(POST_ADD_REQUEST);
+  yield takeLatest(POST_ADD_REQUEST, addPost);
 }
 
 function* watchPostDeleteRequest() {
@@ -160,7 +185,7 @@ export default function* postSaga() {
   yield all([
     fork(watchPostSearchRequest),
     fork(watchPostByPageRequest),
-    // fork(watchPostAddRequest),
+    fork(watchPostAddRequest),
     fork(watchPostDeleteRequest),
     fork(watchPostDetailRequest),
     fork(watchPostLikeRequest),

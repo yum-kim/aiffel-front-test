@@ -11,7 +11,7 @@ import {
   postByPageRequestAction,
 } from '../../reducers/post';
 import Loading from '../common/Loading/Loading';
-import { Link, Routes, Route, Outlet } from 'react-router-dom';
+import { Link, Routes, Route, Outlet, useNavigate } from 'react-router-dom';
 
 const ForumList = () => {
   const [searchTxt, setSearchText] = useState('');
@@ -21,13 +21,12 @@ const ForumList = () => {
   );
   const [searchedPosts, setSearchedPosts] = useState([]);
   const [searchedByInput, setSearchedByInput] = useState(false);
-  const PAGE_LIMIT = useMemo(() => {
-    return 5;
-  }, []);
+  const PAGE_LIMIT = 5;
   const [paginationList, setPaginationList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchReset, setSearchReset] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onChangeSearchText = (e) => {
     setSearchText(e.target.value);
@@ -60,6 +59,10 @@ const ForumList = () => {
   const onClickPagination = (e) => {
     const page = e.target.getAttribute('page');
     setCurrentPage(page);
+  };
+
+  const onMoveAddPost = () => {
+    navigate('/forum/add');
   };
 
   useEffect(() => {
@@ -123,7 +126,7 @@ const ForumList = () => {
       <section className={styles.forum}>
         <div className={styles.topArea}>
           <h2 className={styles.title}>묻고 답하기</h2>
-          <Button name="글쓰기" theme="blue" />
+          <Button name="글쓰기" theme="blue" onClick={onMoveAddPost} />
         </div>
 
         <article className={styles.searchWrapper}>

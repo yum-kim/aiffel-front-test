@@ -1,0 +1,48 @@
+@import '../../styles/main.scss';
+
+.post {
+  .title {
+    @include text-style(28, $dark);
+    margin-bottom: 3rem;
+    text-align: right;
+  }
+
+  .form {
+    .list {
+      margin-bottom: 2rem;
+      @include column-flexbox(start, start);
+
+      label {
+        @include text-style(16, $black);
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+
+      input {
+        width: 100%;
+      }
+
+      select {
+        padding: 0 30px;
+        height: 40px;
+        border: 1px solid $lightGray;
+      }
+
+      textarea {
+        width: 100%;
+        height: 300px;
+        background-color: $lightGray;
+        border-radius: 4px;
+        padding: 10px;
+      }
+    }
+
+    .addBtn {
+      @include flexbox(end, center);
+
+      button {
+        width: 100px;
+      }
+    }
+  }
+}
