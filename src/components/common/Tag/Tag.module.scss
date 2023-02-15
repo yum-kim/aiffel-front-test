@@ -1,0 +1,12 @@
+@import '../../../styles/main.scss';
+
+.tag {
+  @include text-style(13, $primary);
+  padding: 2px 5px;
+  border-radius: 4px;
+  color: $white;
+
+  &:not(:last-of-type) {
+    margin-right: 5px;
+  }
+}

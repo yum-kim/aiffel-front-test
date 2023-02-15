@@ -1,0 +1,62 @@
+@import '../../styles/main.scss';
+
+.post {
+  .title {
+    margin-bottom: 2rem;
+
+    .titleTxt {
+      @include text-style(28, $primary);
+      margin-bottom: 5px;
+    }
+  }
+
+  .content {
+    padding: 2rem 0;
+    border-top: 1px solid $border;
+    border-bottom: 1px solid $border;
+    margin-bottom: 3rem;
+  }
+
+  .actions {
+    @include flexbox(between, center);
+
+    .like {
+      width: 32px;
+      height: 32px;
+      position: relative;
+      border: 1px solid $border;
+      border-radius: 50%;
+      background-color: $white;
+      margin-right: 1rem;
+
+      .fullLike {
+        svg {
+          color: $blue;
+        }
+      }
+
+      .emptyLike {
+        svg {
+          color: $primary;
+        }
+
+        &:hover {
+          svg {
+            color: $blue;
+          }
+        }
+      }
+
+      svg {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .delete {
+    }
+  }
+}

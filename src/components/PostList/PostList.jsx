@@ -1,29 +1,32 @@
 import React from 'react';
 import styles from './PostList.module.scss';
 import { BsHandThumbsUp, BsHandThumbsUpFill } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
+import { useCallback } from 'react';
+import Tag from '../common/Tag/Tag';
 
 const PostList = ({ post }) => {
+  const navigate = useNavigate();
+
+  const onMovePostDetailPage = useCallback((e) => {
+    const postId = e.target.closest('li').getAttribute('postid');
+    navigate(`/forum/${postId}`);
+  });
+
   return (
-    <li className={styles.post}>
+    <li className={styles.post} postid={post.id} onClick={onMovePostDetailPage}>
       <div className={styles.lftArea}>
         <div className={styles.like}>
           {post.isLiked ? (
-            <BsHandThumbsUpFill size="24" />
+            <BsHandThumbsUpFill size="18" />
           ) : (
-            <BsHandThumbsUp size="24" />
+            <BsHandThumbsUp size="18" />
           )}
         </div>
         <div className={styles.contentWrapper}>
           <h3 className={styles.title}>{post.title}</h3>
           <p className={styles.content}>{post.content}</p>
-          <div className={styles.tagWrapper}>
-            <div
-              className={styles.tagList}
-              style={{ backgroundColor: post.tag.color }}
-            >
-              {post.tag.name}
-            </div>
-          </div>
+          <Tag tag={post.tag} />
         </div>
       </div>
       <div className={styles.rhtArea}>

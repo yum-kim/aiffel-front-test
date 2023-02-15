@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import styles from './ForumList.module.scss';
 import AppLayout from '../common/AppLayout/AppLayout';
 import Input from '../common/Input/Input';
 import Button from '../common/Button/Button';
-import PostList from './PostList/PostList';
+import PostList from '../PostList/PostList';
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -20,7 +20,9 @@ const ForumList = () => {
   );
   const [searchedPosts, setSearchedPosts] = useState([]);
   const [searchedByInput, setSearchedByInput] = useState(false);
-  const PAGE_LIMIT = 5;
+  const PAGE_LIMIT = useMemo(() => {
+    return 5;
+  }, []);
   const [paginationList, setPaginationList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchReset, setSearchReset] = useState(false);
@@ -33,7 +35,7 @@ const ForumList = () => {
   /**
    * 과제 구현사항 중 검색과 pagination 처리를 다른 방법으로 요청하는 것으로 이해해
    * 검색 버튼 클릭 시에는 마운트 시점 서버에서 받은 전체 데이터 중 array filter를 사용해 바인딩하고,
-   * pagination 클릭 시에는 page, limit 값을 파라미터로 넣어 서버로부터 데이터를 받아 바인딩하였습니다.
+   * 전체 데이터에서 pagination 클릭 시에는 page, limit 값을 파라미터로 넣어 서버로부터 데이터를 받아 바인딩하였습니다.
    */
   const onSubmitSearchPost = (e) => {
     e.preventDefault();
@@ -145,7 +147,9 @@ const ForumList = () => {
         <article>
           <div className={styles.list}>
             {searchedByInput ? (
-              <p>검색된 내역 {searchedPosts.length}건</p>
+              <p>
+                검색된 내역 {searchedPosts.length}건/총 {postData.length}건
+              </p>
             ) : (
               <p>총 {postData.length}건</p>
             )}

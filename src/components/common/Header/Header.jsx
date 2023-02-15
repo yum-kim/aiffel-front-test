@@ -9,9 +9,9 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <h1 className={styles.logo}>
-        <a href="/">
+        <Link to="/">
           <img src="images/aiffel_logo.png" alt="로고 이미지" />
-        </a>
+        </Link>
       </h1>
       <div className={styles.userInfo}>
         <div className={styles.profile}>

@@ -19,12 +19,7 @@ function logInAPI(data) {
 
 function* logIn(action) {
   try {
-    console.log(`Saga- LOG_IN_SUCCESS`);
-    console.log(action.data);
-
     const res = yield call(logInAPI, action.data);
-
-    console.log(res);
 
     if (res.length > 0) {
       res[0].accessToken = '123456abcdefg';
