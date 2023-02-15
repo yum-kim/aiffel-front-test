@@ -10,12 +10,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/profile" element={<Profile />} />
-      <Route path="/forum">
-        <Route path="" element={<ForumList />} />
-        <Route path=":id" element={<PostDetail />} />
-      </Route>
-      {/* <Route path="/forum/*" element={<ForumMain />} /> */}
-      {/* <Route path="/forum/:id" element={<PostDetail />} /> */}
+      <Route path="/forum/*" element={<ForumList />} />
+      <Route path="/forum/:id" element={<PostDetail />} />
     </Routes>
   );
 }
