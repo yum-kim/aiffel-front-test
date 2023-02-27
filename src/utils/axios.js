@@ -5,7 +5,6 @@ const requestAxios = async (options) => {
   axios.defaults.baseURL = 'http://localhost:5000';
 
   const accessToken = authToken.getToken();
-  let res;
 
   if (accessToken) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
@@ -14,24 +13,13 @@ const requestAxios = async (options) => {
   if (!options.url) return;
 
   try {
-    res = await axios(options);
+    const res = await axios(options);
+    if (res.status !== 200) throw new Error(res);
+    return res.data;
   } catch (e) {
-    res = e.response;
     console.error(e);
-  } finally {
-    return checkResponse(res);
+    return new Error(e);
   }
 };
-
-function checkResponse(res) {
-  if (res.status == 200) {
-    return res.data;
-  } else if (res.status == 400) {
-    alert(res.data.message);
-    return;
-  }
-
-  return res.data;
-}
 
 export default requestAxios;
