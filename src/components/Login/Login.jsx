@@ -55,14 +55,16 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (loginData.accessToken) {
+    if (loginDone) {
       navigate('/forum');
     }
+  }, [loginDone]);
 
+  useEffect(() => {
     if (loginError && !loginData.accessToken) {
       alert('로그인에 실패했습니다. 이메일 혹은 비밀번호를 확인해주세요.');
     }
-  }, [loginLoading]);
+  }, [loginError]);
 
   useEffect(() => {
     emailInput.current.focus();
