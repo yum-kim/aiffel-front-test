@@ -14,7 +14,7 @@ const requestAxios = async (options) => {
 
   try {
     const res = await axios(options);
-    if (res.status !== 200) throw new Error(res);
+    if (res.status !== 200 && res.status !== 201) throw new Error(res);
     return res.data;
   } catch (e) {
     console.error(e);
