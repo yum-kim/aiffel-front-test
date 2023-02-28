@@ -27,12 +27,11 @@ function* logIn(action) {
 
       yield put(loginSuccessAction({ ...res[0] }));
       authToken.setToken(accessToken);
-      //   localStorage.setItem('accessToken', accessToken);
     } else {
       yield put(loginFailureAction(res));
     }
   } catch (e) {
-    yield put(loginFailureAction(e.response.data));
+    yield put(loginFailureAction(e));
   }
 }
 

@@ -25,10 +25,10 @@ export const loginSuccessAction = (data) => {
   };
 };
 
-export const loginFailureAction = (data) => {
+export const loginFailureAction = (error) => {
   return {
     type: LOG_IN_FAILURE,
-    data,
+    error,
   };
 };
 

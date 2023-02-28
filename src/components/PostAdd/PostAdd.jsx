@@ -30,7 +30,7 @@ const PostAdd = () => {
 
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [tag, setTag] = useState('general');
+  const [tag, setTag] = useState({ name: 'general' });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [added, setAdded] = useState(false);

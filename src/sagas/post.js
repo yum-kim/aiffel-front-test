@@ -73,7 +73,7 @@ function* searchAllPost(action) {
   } catch (e) {
     yield put({
       type: POST_SEARCH_FAILURE,
-      data: e.response.data,
+      data: e,
     });
   }
 }
@@ -89,7 +89,7 @@ function* searchCurrentPagePost(action) {
   } catch (e) {
     yield put({
       type: POST_BY_PAGE_FAILURE,
-      data: e.response.data,
+      data: e,
     });
   }
 }
@@ -105,7 +105,7 @@ function* searchDetailPost(action) {
   } catch (e) {
     yield put({
       type: POST_DETAIL_FAILURE,
-      data: e.response.data,
+      data: e,
     });
   }
 }
